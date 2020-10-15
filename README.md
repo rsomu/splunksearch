@@ -32,8 +32,11 @@ For example, to run 40 concurrent searches with 75% of the searches to go after 
 ```
 
 The above command will issue 30 searches against the cached data and 10 searches against the remote-tiered data.
+
 The search time range (starttime, endtime) per user is calculated by search_range/user_count in seconds.
+
 For the cached data, the search time for every search is between latest_time and latest_time + per_user_search_range.
+
 For the non-cached data, the search time for every search is between earliest_time and earliest_time + per_user_search_range.
 
 The searches are in the following format
