@@ -20,8 +20,8 @@ CACHEPCT=$2
 STYPE=$3
 OUTFILE=$4
 TESTNAME=$5
-RUSERS=$(( USERS * CACHEPCT / 100 ))
-LUSERS=$(( USERS - RUSERS ))
+LUSERS=$(( USERS * CACHEPCT / 100 ))
+RUSERS=$(( USERS - LUSERS ))
 
 # 1/4 day - 6 hours
 SRANGE=$(( search_range * 6 * 3600 )) 

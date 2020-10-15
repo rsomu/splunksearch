@@ -24,3 +24,18 @@ username=admin                           # Username under which the searches wil
 password=splunk123                       # Password of the user
 index_name=apache-pure1                  # The custom index where the synthetic apache log data is ingested
 ```
+
+For example, to run 40 concurrent searches with 75% of the searches to go after the Cached data do the following.
+
+```
+  runsearch.sh 40 75 sparse 40users_75pct_sparse Sparse_test
+```
+
+The above command will issue 30 searches against the cached data and 10 searches against the remote-tiered data.
+The search time range (starttime, endtime) per user is calculated by search_range/user_count in seconds.
+For the cached data, the search time for every search is between latest_time and latest_time + per_user_search_range.
+For the non-cached data, the search time for every search is between earliest_time and earliest_time + per_user_search_range.
+
+The searches are in the following format
+
+ `search index=apache-pure1 every10m starttime="10/01/2020:00:00:00" endtime="10/01/2020:04:00:00"`
